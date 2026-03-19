@@ -1,15 +1,26 @@
-import { Product } from '../product';
+import { Product } from '../product.entity';
+import { Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
+
 @Injectable()
 export class CreateProductService {
+  constructor(
+    @InjectRepository(Product)
+    private readonly productRepository: Repository<Product>,
+  ) {}
 
-  execute(): Product {
+  async execute(
+    name: string,
+    description: string,
+    price: number,
+  ): Promise<Product> {
+
     const product = new Product();
-    product.id = '123';
-    product.name = 'Sample Product';
-    product.description = 'This is a sample product.';
-    product.price = 19.99;
+    product.name = name;
+    product.description = description;
+    product.price = price;
 
-    // save product avec le repository
-    return product;
+    return this.productRepository.save(product);
   }
 }

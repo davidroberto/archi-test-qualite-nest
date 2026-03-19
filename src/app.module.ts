@@ -4,6 +4,7 @@ import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
 import { EventEmitterModule } from '@nestjs/event-emitter';
+import { CatalogModule } from './catalog/catalog.module';
 
 @Module({
   imports: [
@@ -20,6 +21,7 @@ import { EventEmitterModule } from '@nestjs/event-emitter';
       autoLoadEntities: true,
     }),
     EventEmitterModule.forRoot(),
+    CatalogModule,
   ],
   controllers: [AppController],
   providers: [AppService],
