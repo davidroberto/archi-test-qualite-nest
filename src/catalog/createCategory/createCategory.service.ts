@@ -14,6 +14,6 @@ export class CreateCategoryService {
     const category = new Category();
     category.name = name;
 
-    return this.categoryRepository.save(category);
+    return await this.categoryRepository.save(category);
   }
 }

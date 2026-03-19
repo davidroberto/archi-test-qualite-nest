@@ -14,6 +14,6 @@ export class CreateCategoryController {
   async createCategory(
     @Body() body: CreateCategoryRequestDTO,
   ): Promise<Category> {
-    return this.createCategoryService.execute(body.name);
+    return await this.createCategoryService.execute(body.name);
   }
 }

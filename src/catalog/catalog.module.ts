@@ -8,12 +8,14 @@ import { DeleteProductController } from './deleteProduct/deleteProduct.controlle
 import { DeleteProductService } from './deleteProduct/deleteProduct.service';
 import { ListAllProductsController } from './listAllProducts/listAllProducts.controller';
 import { ListAllProductsService } from './listAllProducts/listAllProducts.service';
+import { ListAllProductsRepository } from './listAllProducts/listAllProducts.repository';
 import { CreateCategoryController } from './createCategory/createCategory.controller';
 import { CreateCategoryService } from './createCategory/createCategory.service';
 import { DeleteCategoryController } from './deleteCategory/deleteCategory.controller';
 import { DeleteCategoryService } from './deleteCategory/deleteCategory.service';
 import { ListAllCategoriesController } from './listAllCategories/listAllCategories.controller';
 import { ListAllCategoriesService } from './listAllCategories/listAllCategories.service';
+import { ListAllCategoriesRepository } from './listAllCategories/listAllCategories.repository';
 
 @Module({
   imports: [TypeOrmModule.forFeature([Product, Category])],
@@ -29,9 +31,11 @@ import { ListAllCategoriesService } from './listAllCategories/listAllCategories.
     CreateProductService,
     DeleteProductService,
     ListAllProductsService,
+    ListAllProductsRepository,
     CreateCategoryService,
     DeleteCategoryService,
     ListAllCategoriesService,
+    ListAllCategoriesRepository,
   ],
 })
 export class CatalogModule {}

@@ -11,9 +11,16 @@ export class CreateProductController {
   ) {}
 
   @Post('create-product')
-  async createProduct(@Body() body: CreateProductRequestDTO): Promise<Product> {
-    const { name, description, price } = body;
+  async createProduct(
+    @Body() body: CreateProductRequestDTO,
+  ): Promise<Product> {
+    const { name, description, price, categoryIds } = body;
 
-    return this.createProductService.execute(name, description, price);
+    return this.createProductService.execute(
+      name,
+      description,
+      price,
+      categoryIds,
+    );
   }
 }

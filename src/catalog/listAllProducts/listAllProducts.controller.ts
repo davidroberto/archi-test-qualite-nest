@@ -1,6 +1,5 @@
 import { Controller, Get, Inject } from '@nestjs/common';
 import { ListAllProductsService } from './listAllProducts.service';
-import { Product } from '../product.entity';
 
 @Controller('catalog')
 export class ListAllProductsController {
@@ -10,7 +9,7 @@ export class ListAllProductsController {
   ) {}
 
   @Get('products')
-  async listAllProducts(): Promise<Product[]> {
+  async listAllProducts() {
     return this.listAllProductsService.execute();
   }
 }
