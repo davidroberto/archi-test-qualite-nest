@@ -1,7 +1,7 @@
 import { IsNotEmpty, IsNumber, IsPositive, IsString } from 'class-validator';
 
 export class CreateProductRequestDTO {
-  @IsString('Le nom du produit doit être une chaîne de caractères.')
+  @IsString()
   @IsNotEmpty()
   name: string;
 
