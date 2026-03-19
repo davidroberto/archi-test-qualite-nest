@@ -1,12 +1,7 @@
 import { Body, Controller, Inject, Post } from '@nestjs/common';
 import { CreateProductService } from './createProduct.service';
+import { CreateProductRequestDTO } from './createProduct.requestDTO';
 import { Product } from '../product.entity';
-
-type CreateProductRequest = {
-  name: string;
-  description: string;
-  price: number;
-};
 
 @Controller('catalog')
 export class CreateProductController {
@@ -16,7 +11,7 @@ export class CreateProductController {
   ) {}
 
   @Post('create-product')
-  async createProduct(@Body() body: CreateProductRequest): Promise<Product> {
+  async createProduct(@Body() body: CreateProductRequestDTO): Promise<Product> {
     const { name, description, price } = body;
 
     return this.createProductService.execute(name, description, price);
