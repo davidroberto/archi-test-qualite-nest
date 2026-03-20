@@ -9,10 +9,13 @@ import { AddProductToOrderController } from './addProductToOrder/addProductToOrd
 import { AddProductToOrderService } from './addProductToOrder/addProductToOrder.service';
 import { RemoveProductFromOrderController } from './removeProductFromOrder/removeProductFromOrder.controller';
 import { RemoveProductFromOrderService } from './removeProductFromOrder/removeProductFromOrder.service';
+import { GetOrderSummaryController } from './getOrderSummary/getOrderSummary.controller';
+import { GetOrderSummaryService } from './getOrderSummary/getOrderSummary.service';
+import { GetOrderSummaryRepository } from './getOrderSummary/getOrderSummary.repository';
 
 @Module({
   imports: [TypeOrmModule.forFeature([Order, OrderItem, Product])],
-  controllers: [CreateOrderController, AddProductToOrderController, RemoveProductFromOrderController],
-  providers: [CreateOrderService, AddProductToOrderService, RemoveProductFromOrderService],
+  controllers: [CreateOrderController, AddProductToOrderController, RemoveProductFromOrderController, GetOrderSummaryController],
+  providers: [CreateOrderService, AddProductToOrderService, RemoveProductFromOrderService, GetOrderSummaryService, GetOrderSummaryRepository],
 })
 export class OrderModule {}
