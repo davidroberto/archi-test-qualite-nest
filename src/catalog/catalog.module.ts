@@ -16,6 +16,9 @@ import { DeleteCategoryService } from './deleteCategory/deleteCategory.service';
 import { ListAllCategoriesController } from './listAllCategories/listAllCategories.controller';
 import { ListAllCategoriesService } from './listAllCategories/listAllCategories.service';
 import { ListAllCategoriesRepository } from './listAllCategories/listAllCategories.repository';
+import { GetProductController } from './getProduct/getProduct.controller';
+import { GetProductService } from './getProduct/getProduct.service';
+import { GetProductRepository } from './getProduct/getProduct.repository';
 
 @Module({
   imports: [TypeOrmModule.forFeature([Product, Category])],
@@ -23,6 +26,7 @@ import { ListAllCategoriesRepository } from './listAllCategories/listAllCategori
     CreateProductController,
     DeleteProductController,
     ListAllProductsController,
+    GetProductController,
     CreateCategoryController,
     DeleteCategoryController,
     ListAllCategoriesController,
@@ -32,6 +36,8 @@ import { ListAllCategoriesRepository } from './listAllCategories/listAllCategori
     DeleteProductService,
     ListAllProductsService,
     ListAllProductsRepository,
+    GetProductService,
+    GetProductRepository,
     CreateCategoryService,
     DeleteCategoryService,
     ListAllCategoriesService,
