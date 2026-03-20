@@ -12,10 +12,20 @@ Règles techniques :
 
 - Le produit doit être ajouté via son id
 
-Scénarios de test ???
 
 supression de produit dans le panier
 
+Règles technique :
+
+- Suppression par id
+
 récap panier
 
+Règles métier :
+- affiche  le total du panier
+- affiche toutes les lignes
+
 paiement panier (avec fake stripe)
+
+- Règles métier :
+- Modifie le statut du panier à "payé"
