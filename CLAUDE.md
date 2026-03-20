@@ -39,12 +39,18 @@ src/
 
 **Key pattern:** each use case is a self-contained directory (`createProduct/`, `deleteCategory/`, `listAllProducts/`...). Write operations use Controller → Service → TypeORM Repository. Read operations add a custom Repository with SQL queries via DataSource.
 
+**Separation of concerns — OBLIGATOIRE :**
+- **Repository** : contient TOUTE la logique d'accès aux données (requêtes SQL, agrégations, filtrage, calculs via SQL). Ne jamais faire de filtrage, mapping ou calcul en JS dans le service quand cela peut être fait en SQL dans le repository.
+- **Service** : contient uniquement la logique métier (vérifications d'existence, règles métier, orchestration). Ne contient AUCUNE requête SQL ni transformation de données brutes.
+- **Controller** : délègue au service, ne contient aucune logique.
+
 ### Database
 
 - **PostgreSQL** via TypeORM (`synchronize: true`, no migrations)
 - Docker Compose for local DB on port 5433
 - Entities auto-loaded via `autoLoadEntities: true`
-- Entities: `Product` (name, description, price) ↔ `Category` (name) — ManyToMany
+- Entities: `Product` (name, description, price, stock) ↔ `Category` (name) — ManyToMany
+- `Order` → `OrderItem` (OneToMany) → `Product` (ManyToOne)
 
 ### API
 
@@ -60,8 +66,8 @@ src/
 - Files: `{useCaseName}.{type}.ts` — camelCase use case, dot-separated type (`createProduct.service.ts`)
 - Classes: PascalCase with action verb (`CreateProductService`, `ListAllProductsController`)
 - Service entry method: `execute()`
-- Repository methods: `findAll()`
-- Request DTOs: `{UseCase}RequestDTO` — no response DTOs, return entities directly
+- Request DTOs: `{UseCase}RequestDTO` — no response DTOs, return entities ou objets simples directement
+- Repository methods: nommées selon l'action (`findById()`, `findAll()`)
 
 ### Code Style
 

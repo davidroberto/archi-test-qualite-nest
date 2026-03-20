@@ -12,10 +12,13 @@ import { RemoveProductFromOrderService } from './removeProductFromOrder/removePr
 import { GetOrderSummaryController } from './getOrderSummary/getOrderSummary.controller';
 import { GetOrderSummaryService } from './getOrderSummary/getOrderSummary.service';
 import { GetOrderSummaryRepository } from './getOrderSummary/getOrderSummary.repository';
+import { PayOrderController } from './payOrder/payOrder.controller';
+import { PayOrderService } from './payOrder/payOrder.service';
+import { FakeStripeService } from './fakeStripe.service';
 
 @Module({
   imports: [TypeOrmModule.forFeature([Order, OrderItem, Product])],
-  controllers: [CreateOrderController, AddProductToOrderController, RemoveProductFromOrderController, GetOrderSummaryController],
-  providers: [CreateOrderService, AddProductToOrderService, RemoveProductFromOrderService, GetOrderSummaryService, GetOrderSummaryRepository],
+  controllers: [CreateOrderController, AddProductToOrderController, RemoveProductFromOrderController, GetOrderSummaryController, PayOrderController],
+  providers: [CreateOrderService, AddProductToOrderService, RemoveProductFromOrderService, GetOrderSummaryService, GetOrderSummaryRepository, PayOrderService, FakeStripeService],
 })
 export class OrderModule {}
