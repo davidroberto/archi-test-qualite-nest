@@ -15,6 +15,9 @@ export class Product {
   @Column('decimal')
   public price: number;
 
+  @Column({ default: 0 })
+  public stock: number;
+
   @ManyToMany(() => Category, (category) => category.products)
   public categories: Category[];
 }

@@ -5,6 +5,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
 import { EventEmitterModule } from '@nestjs/event-emitter';
 import { CatalogModule } from './catalog/catalog.module';
+import { OrderModule } from './order/order.module';
 
 @Module({
   imports: [
@@ -22,6 +23,7 @@ import { CatalogModule } from './catalog/catalog.module';
     }),
     EventEmitterModule.forRoot(),
     CatalogModule,
+    OrderModule,
   ],
   controllers: [AppController],
   providers: [AppService],
